@@ -8,6 +8,7 @@ public class BaseBuilder<T> {
   protected String toUser;
   protected String toParty;
   protected String toTag;
+  protected String safe;
 
   public T agentId(String agentId) {
     this.agentId = agentId;
@@ -29,6 +30,11 @@ public class BaseBuilder<T> {
     return (T) this;
   }
 
+  public T safe(boolean isSafe) {
+    this.safe = isSafe ? "1" : "0";
+    return (T) this;
+  }
+
   public WxCpMessage build() {
     WxCpMessage m = new WxCpMessage();
     m.setAgentId(this.agentId);
@@ -36,6 +42,7 @@ public class BaseBuilder<T> {
     m.setToUser(this.toUser);
     m.setToParty(this.toParty);
     m.setToTag(this.toTag);
+    m.setSafe(this.safe);
     return m;
   }
 

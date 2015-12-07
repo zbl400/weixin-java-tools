@@ -27,6 +27,7 @@ public class WxCpMessage implements Serializable {
   private String musicUrl;
   private String hqMusicUrl;
   private List<WxArticle> articles = new ArrayList<WxArticle>();
+  private String safe = "0";
   
   public String getToUser() {
     return toUser;
@@ -130,6 +131,17 @@ public class WxCpMessage implements Serializable {
   public String toJson() {
     return WxCpGsonBuilder.INSTANCE.create().toJson(this);
   }
+
+    public String getSafe() {
+        return safe;
+    }
+
+    /**
+     * 表示是否是保密消息，0表示否，1表示是，默认0
+     */
+    public void setSafe(String safe) {
+        this.safe = safe;
+    }
   
   public static class WxArticle {
     

@@ -30,6 +30,10 @@ public class WxCpMessageGsonAdapter implements JsonSerializer<WxCpMessage> {
     }
     messageJson.addProperty("msgtype", message.getMsgType());
 
+    if (StringUtils.isNotBlank(message.getSafe())) {
+      messageJson.addProperty("safe", message.getSafe());
+    }
+
     if (StringUtils.isNotBlank(message.getToParty())) {
       messageJson.addProperty("toparty", message.getToParty());
     }
